@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const cityRouter = require('./city')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -14,6 +15,8 @@ router.get('/:id', function (req, res, next) {
     id: req.params.id
   })
 });
+
+router.use('/city', cityRouter)
 
 
 module.exports = router;
