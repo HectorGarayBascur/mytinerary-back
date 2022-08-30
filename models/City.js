@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
     photo: { type: String, required: true },
     population: { type: Number, required: true },
     description: { type: String, required: true },
-    fundation: { type: Number, required: true },
+    fundation: { type: Date, required: true },
 
 })
 
