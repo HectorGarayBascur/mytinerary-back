@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const cityRouter = require('./cities')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -15,9 +14,5 @@ router.get('/', function (req, res, next) {
 // //     id: req.params.id
 // //   })
 // // });
-
-router.use('/cities', cityRouter)
-router.use('/comments', cityRouter)
-
 
 module.exports = router;
