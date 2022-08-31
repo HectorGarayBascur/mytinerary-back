@@ -15,7 +15,7 @@ const { create, read, readAll, update, destroy } = require('../controllers/cityC
 // router.metodo('la ruta',controlador)
 
 router.post('/', create);
-router.get('/all', readAll);
+router.get('/', readAll);
 router.get('/:id', read);
 router.put('/:id', update);
 router.delete('/:id', destroy);
