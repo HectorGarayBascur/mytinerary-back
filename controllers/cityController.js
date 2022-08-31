@@ -1,3 +1,4 @@
+const { query } = require('express')
 const City = require('../models/City')
 
 const cityController = {
@@ -44,27 +45,46 @@ const cityController = {
     },
     readAll: async (req, res) => {
         //necesitamos todas las ciudades
+        // let query = {}
+        // if (req.query.capacity){
+        //     query.capacity = req.query.capacity
+        // }
+        let cities;
+        let query = {};
+        if (req.query.population) {
+            query.population = req.query.population
+        }
+
         try {
-            let cities = await City.find()
-            if (cities) {
-                res.status(200).json({
-                    message: "You get cities",
-                    response: cities,
-                    success: true
-                })
-            } else {
-                res.status(404).json({
-                    message: "Couldn't get cities",
-                    success: false
-                })
-            }
+            cities = await City.find(query)
+            res.json(cities)
         } catch (error) {
             console.log(error)
-            res.status(400).json({
-                message: "error",
-                success: false
-            })
+            res.status(500).json()
         }
+
+
+        // try {
+        //     let cities = await City.find()
+        //     if (cities) {
+        //         res.status(200).json({
+        //             message: "You get cities",
+        //             response: cities,
+        //             success: true
+        //         })
+        //     } else {
+        //         res.status(404).json({
+        //             message: "Couldn't get cities",
+        //             success: false
+        //         })
+        //     }
+        // } catch (error) {
+        //     console.log(error)
+        //     res.status(400).json({
+        //         message: "error",
+        //         success: false
+        //     })
+        // }
     },
     update: async (req, res) => {
         //update por ciudad por lo que necesitamos id
