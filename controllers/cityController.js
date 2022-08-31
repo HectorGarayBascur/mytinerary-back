@@ -46,13 +46,12 @@ const cityController = {
     readAll: async (req, res) => {
         //necesitamos todas las ciudades
         // let query = {}
-        // if (req.query.capacity){
-        //     query.capacity = req.query.capacity
-        // }
         let cities;
         let query = {};
-        if (req.query.population) {
-            query.population = req.query.population
+
+        if (req.query.city) {
+            const queryString = new RegExp(`^${req.query.city}`)
+            query.city = {$regex: queryString, $options: 'i'}
         }
 
         try {
