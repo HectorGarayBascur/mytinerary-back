@@ -15,4 +15,4 @@ const User = mongoose.model(
     schema
 )
 
-module.exports = City
+module.exports = User
