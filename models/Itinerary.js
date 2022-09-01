@@ -16,3 +16,5 @@ const Itinerary = mongoose.model(
     'itinerarys',
     schema
 )
+
+module.exports = Itinerary
