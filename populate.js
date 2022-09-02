@@ -4,12 +4,125 @@ const db = require('./config/database')
 
 //importar los modelos que necesito para las operaciones
 const City = require('./models/City')
+const Itinerary = require('./models/Itinerary')
 const User = require('./models/User')
 
-User.create({
+Itinerary.create({
+    name: "Berlin Wall",
+    user: "Pedro",
+    city: "Berlin",
+    price: 25,
+    like: [""],
+    tags: ["#beautifullcity", "#amazingTour"] ,
+    duration: 2,
+
+},
+{
+    name: "Burj Khalifa",
+    user: "Raul",
+    city: "Dubai",
+    price: 150,
+    like: [""],
+    tags: ["#amazingviews", "#luxury"] ,
+    duration: 2,
+
+},
+{
+    name: "Museu de Arte de Sao Paulo-Assis Chateaubriand",
+    user: "Tomas",
+    city: "Sao Paulo",
+    price: 35,
+    like: [""],
+    tags: ["#beautifulpaintings", "#loveArt"] ,
+    duration: 5,
+
+},
+{
+    name: "Cerro Otto",
+    user: "Tomas",
+    city: "Bariloche",
+    price: 20,
+    like: [""],
+    tags: ["#adventure", "#trecking"] ,
+    duration: 2,
+
+},
+{
+    name: "Nahuel Huapi Lake",
+    user: "Tomas",
+    city: "Bariloche",
+    price: 75,
+    like: [""],
+    tags: ["#amazingViews", "#relaxing"] ,
+    duration: 5,
+
+},
+{
+    name: "Rome Coliseum",
+    user: "Tomas",
+    city: "Rome",
+    price: 75,
+    like: [""],
+    tags: ["#MaximusDecimusMeridius", "#loveArt"] ,
+    duration: 2,
+
+},
+{
+    name: "Fontana di Trevi",
+    user: "Raul",
+    city: "Rome",
+    price: 5,
+    like: [""],
+    tags: ["#loveWishes", "#toBe$$$Rich$$$"] ,
+    duration: 1,
+
+},
+{
+    name: "Arch of Triumph",
+    user: "Raul",
+    city: "Paris",
+    price: 10,
+    like: [""],
+    tags: ["#conquerParis", "#historicalMonument"] ,
+    duration: 2,
+
+},
+{
+    name: "Eiffel Tower",
+    user: "Pedro",
+    city: "Paris",
+    price: 25,
+    like: [""],
+    tags: ["#love", "#bonjour"] ,
+    duration: 3,
+
+},
+{
+    name: "Buckingham Palace Tour",
+    user: "Pedro",
+    city: "London",
+    price: 85,
+    like: [""],
+    tags: ["#dontBotherTheGuards", "#loveArt"] ,
+    duration: 3,
+
+},
+{
+    name: "London Eye",
+    user: "Tomas",
+    city: "London",
+    price: 65,
+    like: [""],
+    tags: ["#breathTakingView", "#incredibleExperience"] ,
+    duration: 2,
+
+})
+
+
+ User.create({
     name: "Pedro",
     lastName: "Martinez",
-    photo: { type: String, required: true },
+    photo: "http://drive.google.com/uc?export=view&id=1qjU-l4rZr83yyNNR_wU-0L4fKD0fqoVu",
     mail: "pedromartinez2@gmail.com",
     password: "hola123",
     country: "Argentina",
@@ -17,7 +130,7 @@ User.create({
     {
         name: "Raul",
         lastName: "Galarza",
-        photo: { type: String, required: true },
+        photo: "http://drive.google.com/uc?export=view&id=1TjpvxDjFE4CPBqE8yU5Ryf_YrUeFxgVS",
         mail: "raulgalarza5@gmail.com",
         password: "hola123",
         country: "Chile",
@@ -25,12 +138,12 @@ User.create({
     {
         name: "Tomas",
         lastName: "Delgado",
-        photo: { type: String, required: true },
+        photo: "http://drive.google.com/uc?export=view&id=1fwAfcM7btXCsdkQYm38FWYvHHKXMGgjs",
         mail: "delgadotomas@gmail.com",
         password: "hola123",
         country: "Colombia",
     },
-)
+) 
 
 City.create({
     city: "Paris",
@@ -153,5 +266,5 @@ City.create({
         fundation: "1554-01-01",
     },
 )
-
+ 
 //node populate.js
