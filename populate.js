@@ -4,6 +4,33 @@ const db = require('./config/database')
 
 //importar los modelos que necesito para las operaciones
 const City = require('./models/City')
+const User = require('./models/User')
+
+User.create({
+    name: "Pedro",
+    lastName: "Martinez",
+    photo: { type: String, required: true },
+    mail: "pedromartinez2@gmail.com",
+    password: "hola123",
+    country: "Argentina",
+},
+    {
+        name: "Raul",
+        lastName: "Galarza",
+        photo: { type: String, required: true },
+        mail: "raulgalarza5@gmail.com",
+        password: "hola123",
+        country: "Chile",
+    },
+    {
+        name: "Tomas",
+        lastName: "Delgado",
+        photo: { type: String, required: true },
+        mail: "delgadotomas@gmail.com",
+        password: "hola123",
+        country: "Colombia",
+    },
+)
 
 City.create({
     city: "Paris",
