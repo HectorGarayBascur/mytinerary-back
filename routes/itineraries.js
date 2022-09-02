@@ -6,9 +6,9 @@ const { create, update, destroy } = require('../controllers/itineraryController'
 
 /* GET users listing. */
 
-router.post('/itineraries', create);
-router.patch('/itineraries/:id', update);
-router.delete('/itineraries/:id', destroy);
+router.post('/', create);
+router.patch('/:id', update);
+router.delete('/:id', destroy);
 
 
 module.exports = router;
