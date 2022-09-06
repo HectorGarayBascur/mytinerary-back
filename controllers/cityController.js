@@ -5,10 +5,11 @@ const cityController = {
     create: async (req, res) => {
         //    const {city,country,photo,population,description,fundation,} = req.body
         try {
-            await new City(req.body).save()// req.body tiene que tener todas las variables antes descritas
+            let city = await new City(req.body).save()// req.body tiene que tener todas las variables antes descritas
             res.status(201).json({
                 message: 'City created',
-                success: true
+                success: true,
+                id: city._id
             })
         } catch (error) {
             res.status(400).json({
@@ -51,7 +52,7 @@ const cityController = {
 
         if (req.query.city) {
             const queryString = new RegExp(`^${req.query.city}`)
-            query.city = {$regex: queryString, $options: 'i'}
+            query.city = { $regex: queryString, $options: 'i' }
         }
 
         try {
