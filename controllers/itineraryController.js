@@ -19,12 +19,12 @@ const itineraryController = {
 
         try {
             let itineraries = await Itinerary.find(query)
-                .populate('user', {name:1})
-                .populate('city', {city:1})
+                .populate('user', { name: 1 })
+                .populate('city', { city: 1 })
 
             if (itineraries) {
                 res.status(200).json({
-                    message: "Your get itineraries "+req.query.city ,
+                    message: "Your get itineraries ",
                     response: itineraries,
                     success: true
                 })
@@ -42,12 +42,40 @@ const itineraryController = {
             })
         }
     },
+    read: async (req, res) => {
+        const { id } = req.params
+        try {
+            let itinerary = await Itinerary.findOne({ _id: id })
+                .populate('user')
+                .populate('city')
+            //city = {} // si no lo encuentra
+            //si city no existe => city = {} retorno un json con 404
+            if (itinerary) {
+                res.status(200).json({
+                    message: "You get one itinerary",
+                    response: itinerary,
+                    success: true
+                })
+            } else {
+                res.status(404).json({
+                    message: "Couldn't find itinerary",
+                    success: false
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({
+                message: "error",
+                success: false
+            })
+        }
+    },
 
     create: async (req, res) => {
 
         try {
             await new Itinerary(req.body).save()
-            .populate("itinerary")
+                .populate("itinerary")
             res.status(201).json({
                 message: 'Itinerary created',
                 success: true
