@@ -9,8 +9,8 @@ const User = require('./models/User')
 
 Itinerary.create({
     name: "Berlin Wall",
-    user: "Pedro",
-    city: "Berlin",
+    user: "631273c52b3aefbeef5c4edf",
+    city: "630f91ed6efbf68f3f260347",
     price: 25,
     like: [""],
     tags: ["#beautifullcity", "#amazingTour"] ,
@@ -19,8 +19,8 @@ Itinerary.create({
 },
 {
     name: "Burj Khalifa",
-    user: "Raul",
-    city: "Dubai",
+    user: "631273c52b3aefbeef5c4ee0",
+    city: "630f91ed6efbf68f3f26034a",
     price: 150,
     like: [""],
     tags: ["#amazingviews", "#luxury"] ,
@@ -29,8 +29,8 @@ Itinerary.create({
 },
 {
     name: "Museu de Arte de Sao Paulo-Assis Chateaubriand",
-    user: "Tomas",
-    city: "Sao Paulo",
+    user: "631273c52b3aefbeef5c4ee1",
+    city: "630f91ed6efbf68f3f260353",
     price: 35,
     like: [""],
     tags: ["#beautifulpaintings", "#loveArt"] ,
@@ -39,8 +39,8 @@ Itinerary.create({
 },
 {
     name: "Cerro Otto",
-    user: "Tomas",
-    city: "Bariloche",
+    user: "631273c52b3aefbeef5c4ee1",
+    city: "630f91ed6efbf68f3f260351",
     price: 20,
     like: [""],
     tags: ["#adventure", "#trecking"] ,
@@ -49,8 +49,8 @@ Itinerary.create({
 },
 {
     name: "Nahuel Huapi Lake",
-    user: "Tomas",
-    city: "Bariloche",
+    user: "631273c52b3aefbeef5c4ee0",
+    city: "630f91ed6efbf68f3f260351",
     price: 75,
     like: [""],
     tags: ["#amazingViews", "#relaxing"] ,
@@ -59,8 +59,8 @@ Itinerary.create({
 },
 {
     name: "Rome Coliseum",
-    user: "Tomas",
-    city: "Rome",
+    user: "631273c52b3aefbeef5c4edf",
+    city: "631273c52b3aefbeef5c4ee6",
     price: 75,
     like: [""],
     tags: ["#MaximusDecimusMeridius", "#loveArt"] ,
@@ -69,8 +69,8 @@ Itinerary.create({
 },
 {
     name: "Fontana di Trevi",
-    user: "Raul",
-    city: "Rome",
+    user: "631273c52b3aefbeef5c4ee0",
+    city: "631273c52b3aefbeef5c4ee6",
     price: 5,
     like: [""],
     tags: ["#loveWishes", "#toBe$$$Rich$$$"] ,
@@ -79,8 +79,8 @@ Itinerary.create({
 },
 {
     name: "Arch of Triumph",
-    user: "Raul",
-    city: "Paris",
+    user: "631273c52b3aefbeef5c4ee0",
+    city: "630f91ed6efbf68f3f260345",
     price: 10,
     like: [""],
     tags: ["#conquerParis", "#historicalMonument"] ,
@@ -89,8 +89,8 @@ Itinerary.create({
 },
 {
     name: "Eiffel Tower",
-    user: "Pedro",
-    city: "Paris",
+    user: "631273c52b3aefbeef5c4ee1",
+    city: "630f91ed6efbf68f3f260345",
     price: 25,
     like: [""],
     tags: ["#love", "#bonjour"] ,
@@ -99,8 +99,8 @@ Itinerary.create({
 },
 {
     name: "Buckingham Palace Tour",
-    user: "Pedro",
-    city: "London",
+    user: "631273c52b3aefbeef5c4ee1",
+    city: "630f91ed6efbf68f3f260346",
     price: 85,
     like: [""],
     tags: ["#dontBotherTheGuards", "#loveArt"] ,
@@ -109,8 +109,8 @@ Itinerary.create({
 },
 {
     name: "London Eye",
-    user: "Tomas",
-    city: "London",
+    user: "631273c52b3aefbeef5c4edf",
+    city: "630f91ed6efbf68f3f260346",
     price: 65,
     like: [""],
     tags: ["#breathTakingView", "#incredibleExperience"] ,
@@ -144,7 +144,7 @@ Itinerary.create({
         country: "Colombia",
     },
 ) 
-
+/*
 City.create({
     city: "Paris",
     country: "France",
@@ -266,5 +266,5 @@ City.create({
         fundation: "1554-01-01",
     },
 )
- 
+ */
 //node populate.js

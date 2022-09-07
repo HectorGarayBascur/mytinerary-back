@@ -1,7 +1,10 @@
 const { query } = require('express')
+const { populate } = require('../models/Itinerary')
 const Itinerary = require('../models/Itinerary')
 
 const itineraryController = {
+
+
 
     readAll: async (req, res) => {
         let query = {}
@@ -39,9 +42,12 @@ const itineraryController = {
             })
         }
     },
+
     create: async (req, res) => {
+
         try {
             await new Itinerary(req.body).save()
+            .populate("itinerary")
             res.status(201).json({
                 message: 'Itinerary created',
                 success: true
