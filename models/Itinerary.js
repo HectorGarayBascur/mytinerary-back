@@ -7,18 +7,16 @@ const schema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'users',
         required: true
-     },
+    },
     city: {
         type: mongoose.Types.ObjectId,
         ref: 'cities',
-
         required: true
-     },
+    },
     price: { type: Number, required: true },
     like: { type: Array, required: true },
     tags: { type: Array, required: true },
     duration: { type: Number, required: true },
-
 })
 
 
