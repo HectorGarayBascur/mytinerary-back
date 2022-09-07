@@ -46,11 +46,14 @@ const itineraryController = {
     create: async (req, res) => {
 
         try {
+
             await new Itinerary(req.body).save()
             .populate("itinerary")
+
             res.status(201).json({
                 message: 'Itinerary created',
-                success: true
+                success: true,
+                tags: city.tags
             })
         } catch (error) {
             res.status(400).json({
