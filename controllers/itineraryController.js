@@ -1,10 +1,55 @@
 const { query } = require('express')
+const { populate } = require('../models/Itinerary')
 const Itinerary = require('../models/Itinerary')
 
 const itineraryController = {
-    create: async (req, res) => {
+
+
+
+    readAll: async (req, res) => {
+        let query = {}
+
+        if (req.query.user) {
+            query.user = req.query.user
+        }
+
+        if (req.query.city) {
+            query.city = req.query.city
+        }
+
         try {
-            let city = await new Itinerary(req.body).save()
+            let itineraries = await Itinerary.find(query)
+                .populate('user', {name:1})
+                .populate('city', {city:1})
+
+            if (itineraries) {
+                res.status(200).json({
+                    message: "Your get itineraries "+req.query.city ,
+                    response: itineraries,
+                    success: true
+                })
+            } else {
+                res.status(404).json({
+                    message: "couldn't find itineraries",
+                    success: false
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({
+                message: "error",
+                success: false
+            })
+        }
+    },
+
+    create: async (req, res) => {
+
+        try {
+
+            await new Itinerary(req.body).save()
+            .populate("itinerary")
+
             res.status(201).json({
                 message: 'Itinerary created',
                 success: true,
@@ -44,7 +89,7 @@ const itineraryController = {
         }
     },
     destroy: async (req, res) => {
-        
+
         const { id } = req.params
         try {
             let itinerary = await Itinerary.findOneAndDelete({ _id: id })
