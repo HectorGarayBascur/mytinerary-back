@@ -32,9 +32,6 @@ describe('POST /cities', function () {
             })
             .expect(201, done)
     })
-})
-
-describe('POST /cities', function () {
     it('Must responde with 400 status code', function (done) {
         request(app)
             .post('/cities')
