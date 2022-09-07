@@ -1,24 +1,52 @@
-const {query}= require("express")
+
 const Activity= require("../models/Activity")
 
 const activityController= {
    
         create: async (req, res) => {
-            //    const {city,country,photo,population,description,fundation,} = req.body
+
             try {
-                let city = await new City(req.body).save()// req.body tiene que tener todas las variables antes descritas
+       await new Activity(req.body).save()
+          
+            
                 res.status(201).json({
-                    message: 'Comment Created',
+                    message: 'Activity Created',
                     success: true,
-                    id: city._id
+                    
                 })
             } catch (error) {
                 res.status(400).json({
-                    message: "Couldn't create comment",
+                    message: "Couldn't create Activity",
                     success: false
                 })
             }
         },
+
+        read: async (req,res)=> {
+
+
+            let activities
+            let query= {}
+
+            if (req.query.itinerary) {
+                query.itinerary= req.query.itinerary
+            }
+
+            try{
+activities = await Activity.find(query)
+.populate("itinerary")
+res.status(200).json({
+    message:"activity by itinerary",
+    response: activities,
+    succes:true
+
+})}
+        catch(error) {
+            res.status(400).json({
+                message: "Couldn't found activities",
+                success: false
+            })}}
+
 
 }
 
