@@ -3,62 +3,45 @@ const { populate } = require('../models/Itinerary')
 const Itinerary = require('../models/Itinerary')
 
 const itineraryController = {
-    
-    itineraries: async (req,res) => {
-        let itineraries
-        let query={}
 
-       //Itinerarios by esto es para USER
 
-        if(req.query.user){
-    query.user=req.query.user
-            }
 
-                //Itinerarios by esto es para CITIES
+    readAll: async (req, res) => {
+        let query = {}
 
-            if(req.query.city){
-                query.city=req.query.city
-                        }
+        if (req.query.user) {
+            query.user = req.query.user
+        }
+
+        if (req.query.city) {
+            query.city = req.query.city
+        }
 
         try {
-            itineraries= await Itinerary.find(query)
-            .populate("user",{name:1})
-            .populate("city",{city:1})
-            res.status(200).json({
-                message:"itineraries by city",
-                response: itineraries,
-                succes:true
+            let itineraries = await Itinerary.find(query)
+                .populate('user', {name:1})
+                .populate('city', {city:1})
+
+            if (itineraries) {
+                res.status(200).json({
+                    message: "Your get itineraries "+req.query.city ,
+                    response: itineraries,
+                    success: true
+                })
+            } else {
+                res.status(404).json({
+                    message: "couldn't find itineraries",
+                    success: false
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({
+                message: "error",
+                success: false
             })
         }
-
-        catch(error){
-            res.status(500).json
-        }
-
     },
-
-itinerariesByCity: async (req,res)=> {
-
-let query= {}
-if(req.query.cities) {
-
-    query.cities=req.query.cities
-}
-if (query.itineraries) {
-    
-    query.cities=req.query.cities
-}
-
-    try {
-        let itineraries= await Itinerary.find(query)
-        .populate("city")
-    
-    }
-    catch(error){
-        res.status(500).json
-    }
-
-},
 
     create: async (req, res) => {
 
@@ -103,7 +86,7 @@ if (query.itineraries) {
         }
     },
     destroy: async (req, res) => {
-        
+
         const { id } = req.params
         try {
             let itinerary = await Itinerary.findOneAndDelete({ _id: id })
