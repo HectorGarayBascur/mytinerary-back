@@ -6,6 +6,162 @@ const db = require('./config/database')
 const City = require('./models/City')
 const Itinerary = require('./models/Itinerary')
 const User = require('./models/User')
+const Activity = require ("./models/Activity")
+
+Activity.create({
+    name: "Visit de top of the Tower",
+    photo: "https://images.musement.com/cover/0052/60/thumb_5159038_cover_header.jpeg?w=1024",
+    itinerary: "6318db2de6491b05f8a4be7b",
+},
+{
+    name: "Dubai fountain show and lake by traditional boat",
+    photo: "https://images.musement.com/cover/0052/60/thumb_5159038_cover_header.jpeg?w=1024",
+    itinerary: "6318db2de6491b05f8a4be7b",
+},
+{
+    name: "Burj Khalifa tickets and 3 course meal at Rooftop",
+    photo: "https://images.musement.com/cover/0053/20/thumb_5219009_cover_header.png?w=600",
+    itinerary: "6318db2de6491b05f8a4be7b",
+},
+{
+    name: "See the history of the museum in its micro theater",
+    photo: "https://www.turismobr.com/wp-content/uploads/2016/12/Museu_de_Arte_de_Sao_Paulo-300x194.jpg",
+    itinerary: "6318db2de6491b05f8a4be7c",
+},
+{
+    name: "Guided tour of the entire museum",
+    photo: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/a0/82/76/caption.jpg?w=1100&h=-1&s=1",
+    itinerary: "6318db2de6491b05f8a4be7c",
+},
+{
+    name: "End the tour with a classic Brazilian meal",
+    photo: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/a0/82/76/caption.jpg?w=1100&h=-1&s=1",
+    itinerary: "6318db2de6491b05f8a4be7c",
+},
+{
+    name: "Have a snack in the revolving cafe del Cerro",
+    photo: "https://www.clarin.com/img/2018/11/21/vLyKUybPt_720x0__1.jpg",
+    itinerary: "6318db2de6491b05f8a4be7d",
+},
+{
+    name: "Trekking",
+    photo: "https://barilocheturismo.gob.ar/images/actividades/cerros/otto/cerrootto_01.jpg",
+    itinerary: "6318db2de6491b05f8a4be7d",
+},
+{
+    name: "Go down the hill by boat",
+    photo: "https://www.telefericobariloche.com.ar/noticias/img/original/IhAdfJBmCroqMFTXKyLVsOtZ.jpg",
+    itinerary: "6318db2de6491b05f8a4be7d",
+},
+{
+    name: "Guided tour with registered historians of the city",
+    photo: "https://carpediem.tours/roma/wp-content/uploads/sites/6/2015/11/fontanatrevi.jpg",
+    itinerary: "6318db2de6491b05f8a4be80",
+},
+{
+    name: "Ancient Rome show at the fountain",
+    photo: "https://turismo.org/wp-content/uploads/2013/04/Fontana-de-Trevi-760x500.jpg",
+    itinerary: "6318db2de6491b05f8a4be80",
+},
+{
+    name: "Take the photo edited by photographer to look like ancient Rome",
+    photo: "https://turismo.org/wp-content/uploads/2015/05/fontana-di-trevi.jpg",
+    itinerary: "6318db2de6491b05f8a4be80",
+},
+{
+    name: "Views from the RoofTop of the arch",
+    photo: "https://cdn2.civitatis.com/francia/paris/galeria/vistas-desde-arco-triunfo.jpg",
+    itinerary: "6318db2de6491b05f8a4be81",
+},
+{
+    name: "Tour guide who explains the history of the Arc de Triomphe",
+    photo: "https://cdn2.civitatis.com/francia/paris/galeria/vistas-desde-arco-triunfo.jpg",
+    itinerary: "6318db2de6491b05f8a4be81",
+},
+{
+    name: "Have coffee in front of the Arc de Triomphe after a walk",
+    photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGsaPShDzgOv0ViWtJ47NJr08HuUOby8g2xbn_Gel6Ew&s",
+    itinerary: "6318db2de6491b05f8a4be81",
+},
+{
+    name: "Climb the tower with a hired photographer",
+    photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0oxXVpP3R0zbxeE-8O7YokmbWRvRtfAPSc5aSDTEqQWuN3HWJBTMuSvWeWcr1wPoRR1I&usqp=CAU",
+    itinerary: "6318db2de6491b05f8a4be82",
+},
+{
+    name: "Have a snack with personal music, romantic date",
+    photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpkddMQzV60vuWU51Iqikw9VdHH-dYCeiFH_rBFNBe189oQW7DIPi1YFUi0JkL745CrC8&usqp=CAU",
+    itinerary: "6318db2de6491b05f8a4be82",
+},
+{
+    name: "Guided tour of the tower area, with electric skateboards",
+    photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyfjeYSyPlW5OLOpW9bBJ_x4hgzspJ_W-PQ&usqp=CAU",
+    itinerary: "6318db2de6491b05f8a4be82",
+},
+{
+    name: "Guided tour of the palace",
+    photo: "https://cdn.citywonders.com/media/21117/new-project-9.jpg?anchor=center&mode=crop&width=832&height=475",
+    itinerary: "6318db2de6491b05f8a4be83",
+},
+{
+    name: "Have tea in a salon of the queen",
+    photo: "https://ep00.epimg.net/elpais/imagenes/2018/09/21/album/1537516444_578982_1537517391_album_normal.jpg",
+    itinerary: "6318db2de6491b05f8a4be83",
+},
+{
+    name: "Tour the royal garden of royalty",
+    photo: "https://cdn.getyourguide.com/img/tour/5b56dd82d29ba.jpeg/98.jpg",
+    itinerary: "6318db2de6491b05f8a4be83",
+},
+{
+    name: "Premium experiencie, have dinner in the top de London",
+    photo: "https://images.prismic.io/mystique/1f689989-6b0e-4d96-a981-7d42b12f2369_federico-tasin-rejtbSVNZII-unsplash.jpg?auto=compress%2Cformat&h=334.5&q=75&fit=crop&ar=7%3A4&fm=webp",
+    itinerary: "6318db2de6491b05f8a4be84",
+},
+{
+    name: "Standar experiencie, recommended",
+    photo: "https://images.prismic.io/mystique/22e81b07-e712-4392-8d31-01834bdbd3b5_julius-jansson-jGgYF8Q6ewA-unsplash+%282%29.jpg?auto=compress%2Cformat&h=334.5&q=75&fit=crop&ar=7%3A4&fm=webp",
+    itinerary: "6318db2de6491b05f8a4be84",
+},
+{
+    name: "Fast track Tickets",
+    photo: "https://images.prismic.io/mystique/7dbe5b45-248f-42ee-aa5e-ae396cbd24dd_paul-silvan-WeUcTePA8Yo-unsplash.jpg?auto=compress%2Cformat&h=334.5&q=75&fit=crop&ar=7%3A4&fm=webp",
+    itinerary: "6318db2de6491b05f8a4be84",
+},
+{
+    name: "Visit to Victoria Island",
+    photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/27/89/8e.jpg",
+    itinerary: "6318db2de6491b05f8a4be7e",
+},
+{
+    name: "Visit the myrtle forest",
+    photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/0a/d1/51.jpg",
+    itinerary: "6318db2de6491b05f8a4be7e",
+},
+{
+    name: "Guided trout fishing",
+    photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/74/7d/22.jpg",
+    itinerary: "6318db2de6491b05f8a4be7e",
+},
+{
+    name: "Free tour, without guide.",
+    photo: "https://lp-cms-production.imgix.net/2020-11/GettyRF_597021401.jpg?auto=format&q=40&ar=16%3A9&fit=crop&crop=center&fm=auto&w=1678",
+    itinerary: "6318db2de6491b05f8a4be7f",
+},
+{
+    name: "Walk the internal corridors of the coliseum",
+    photo: "https://lp-cms-production.imgix.net/2020-11/GettyRF_597021401.jpg?auto=format&q=40&ar=16%3A9&fit=crop&crop=center&fm=auto&w=1678",
+    itinerary: "6318db2de6491b05f8a4be7f",
+},
+{
+    name: "Explore the surroundings of the coliseum with bicycles",
+    photo: "https://lp-cms-production.imgix.net/2020-11/GettyRF_597021401.jpg?auto=format&q=40&ar=16%3A9&fit=crop&crop=center&fm=auto&w=1678",
+    itinerary: "6318db2de6491b05f8a4be7f",
+},
+)
+/*
+
+)
 
 Itinerary.create({
     name: "Berlin Wall",
@@ -267,4 +423,6 @@ City.create({
     },
 )
  */
+
+
 //node populate.js
