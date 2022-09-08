@@ -17,7 +17,7 @@ const { create, read, readAll, update, destroy } = require('../controllers/cityC
 router.post('/', create);
 router.get('/', readAll);
 router.get('/:id', read);
-router.put('/:id', update);
+router.patch('/:id', update);
 router.delete('/:id', destroy);
 
 //localhost4000/events/
