@@ -2,10 +2,11 @@ const { query } = require('express')
 const User = require('../models/User')
 const crypto = require('crypto')//recurso propio de node.js para generar codigos aleatorios y unicos
 const bcryptjs = require('bcryptjs')// recurso propio de nodejs para hashear constraseñas
+const sendMail = require('./sendMail')
 
 const userController = {
     signUp: async (req, res) => {
-        const { name, photo, mail, password, role, from } = req.body
+        let { name, photo, mail, password, role, from, lastName, country } = req.body
         // el role tiene que venir desde el front para usar este metodo para ambos casos
         try {
             let user = await User.findOne({ mail })
@@ -15,19 +16,21 @@ const userController = {
                 let code = crypto.randomBytes(15).toString('hex') // code: clave unica de usuario 
                 if (from === 'form') {// si la data viene del formulario de registro
                     password = bcryptjs.hashSync(password, 10), // utilizamos el metodo hashsync que requiere dos params       
-                        user = await new User({ name, photo, mail, password: [password], role, from: [from], logged, verified, code }).save()
-                    //aca hay que incorporar la funcion para el envio de mail de verificacion
+                        user = await new User({ name, photo, mail, password: [password], role, from: [from], logged, verified, code, lastName, country }).save()
+                    sendMail(mail, code)
                     res.status(201).json({
                         message: 'User signed up from page',
+                        response: user,
                         success: true
                     })
                 } else {//si viene desde redes sociales (cualquier red social)
                     password = bcryptjs.hashSync(password, 10), // utilizamos el metodo hashsync que requiere dos params       
                         verified = true
-                    user = await new User({ name, photo, mail, password: [password], role, from: [from], logged, verified, code }).save()
+                    user = await new User({ name, photo, mail, password: [password], role, from: [from], logged, verified, code, lastName, country }).save()
                     //no hace falta enviar mail de verificacion
                     res.status(201).json({
                         message: 'User signed up from' + from,
+                        response: user,
                         success: true
                     })
                 }
@@ -35,6 +38,7 @@ const userController = {
                 if (user.from.includes(from)) {//si la propiedad from del usuario (que es un array) incluye el valor from
                     res.status(200).json({//200 a confirma/estudiar
                         message: 'User already registered' + from,
+                        response: user,
                         success: false
                     })
                 } else {
@@ -45,6 +49,7 @@ const userController = {
                     await user.save()
                     res.status(201).json({
                         message: 'User signed up from' + from,
+                        response: user,
                         success: true
                     })
                 }
