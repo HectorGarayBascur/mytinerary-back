@@ -33,11 +33,14 @@ const sendMail = async (mail, code) => {
         subject: 'Please verify your Mytinerary account',
         html: `
             <div>
-
+                <h1>${mail}</h1>
+                <a href='verificarcorreo.com/${code}'></a>
             </div>
         ` //codigo HTML puro para que se renderice el cuerpo del mail
         //en el cuerpo del html tengo que enviar un link hacia una direccion que verifique la clave unica de verificacion
         //ese link o endpoint es la que se conectara con el metodo correspondiente para la verificacion de la cuenta
+        //no olvidar hostear el back para que funcione link de anchor
+        //local host se tiene que cambiar por la URL hosteada de back
     }
     await transport.sendMail(mailOptions, (error, response) => {
         if (error) {
