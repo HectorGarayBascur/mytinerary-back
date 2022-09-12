@@ -3,6 +3,7 @@ const User = require('../models/User')
 const crypto = require('crypto')//recurso propio de node.js para generar codigos aleatorios y unicos
 const bcryptjs = require('bcryptjs')// recurso propio de nodejs para hashear constraseñas
 const sendMail = require('./sendMail')
+const { findOne } = require('../models/User')
 
 const userController = {
     signUp: async (req, res) => {
@@ -62,8 +63,106 @@ const userController = {
             })
         }
     },
-    verifyMail: async () => { },
-    signIn: async () => { },
+    //el codigo unico y aleatorio generado en el meodo de signup
+    //se pasa por params a este otro metodo para poder verificar la cuenta
+    // luego de requerirlo lo comparo con los perfiles ya creados(buscar en la base de datos)
+    //si encuentra el usuario cambio el verified a true
+    //si no lo encuentra avisar que el mail no tiene cuenta
+    verifyMail: async (req, res) => {
+        const { code } = req.params
+        try {
+            let user = await User.findOne({ code })
+            if (user) {
+                user.verified = true
+                await user.save()
+                res.status(200).redirect('https://www.google.com')//aqui se coloca link de redireccion
+                //redireccionar hacia index o pagina de bienvenida
+                //no olvidar hostear el front para que funcione el redireccionamiento
+            } else {
+                res.status(404).json({
+                    message: "Email hasn't account yet",
+                    success: false
+                })
+            }
+        } catch (error) {
+            res.status(400).json({
+                message: "Couldn't verify account",
+                success: false
+            })
+        }
+    },
+    signIn: async (req, res) => {
+        const { mail, password, from } = req.body
+        try {
+            const user = await User.findOne({ mail })
+            if (!user) {
+                res.status(404).json({
+                    message: "User doesn't exist, please sign up",
+                    success: false
+                })
+            } else if (user.verified) {
+                const checkPass = user.password.filter(passwordUser => bcryptjs.compareSync(password, passwordUser))
+                if (from == "form") {
+                    if (checkPass.length > 0) {
+                        const loginUser = {
+                            id: user._id,
+                            name: user.name,
+                            mail: user.mail,
+                            role: user.role,
+                            from: user.from,
+                            photo: user.photo
+                        }
+                        user.logged = true
+                        await user.save()
+                        res.status(200).json({
+                            response: { user: loginUser },
+                            message: 'Welcome to Mytinerary ' + user.name,
+                            success: true
+                        })
+                    } else {
+                        res.status(400).json({
+                            message: 'Sorry, Username or password incorrect',
+                            success: false
+                        })
+                    }
+                } else {
+                    if (checkPass.length > 0) {
+                        const loginUser = {
+                            id: user._id,
+                            name: user.name,
+                            mail: user.mail,
+                            role: user.role,
+                            from: user.from,
+                            photo: user.photo
+                        }
+                        user.logged = true
+                        await user.save()
+                        res.status(200).json({
+                            response: { user: loginUser },
+                            message: 'Welcome to Mytinerary ' + user.name,
+                            success: true
+                        })
+                    } else {
+                        res.status(400).json({
+                            message: 'Invalid credentials',
+                            success: false
+                        })
+                    }
+                }
+            } else {
+                res.status(401).json({
+                    message: 'Please, verify your email account and try again',
+                    success: false
+                })
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(401).json({
+                message: 'Sign in ERROR, try again later',
+                success: false
+            })
+        }
+    },
     signOut: async () => { },
 
     all: async (req, res) => {
