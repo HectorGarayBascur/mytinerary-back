@@ -34,7 +34,7 @@ const sendMail = async (mail, code) => {
         html: `
             <div>
                 <h1>${mail}</h1>
-                <a href='verificarcorreo.com/${code}'></a>
+                <a href='verificarcorreo.com/${code}'>click here for verify your account!</a>
             </div>
         ` //codigo HTML puro para que se renderice el cuerpo del mail
         //en el cuerpo del html tengo que enviar un link hacia una direccion que verifique la clave unica de verificacion
