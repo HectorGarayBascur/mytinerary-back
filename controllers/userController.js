@@ -164,6 +164,33 @@ const userController = {
         }
     },
     signOut: async () => { },
+    read: async (req, res) => {
+        const { id } = req.params
+        try {
+            let itinerary = await Itinerary.findOne({ _id: id })
+            //city = {} // si no lo encuentra
+            //si city no existe => city = {} retorno un json con 404
+            if (itinerary) {
+                res.status(200).json({
+                    message: "You get one itinerary",
+                    response: itinerary,
+                    success: true
+                })
+            } else {
+                res.status(404).json({
+                    message: "Couldn't find itinerary",
+                    success: false
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({
+                message: "error",
+                success: false
+            })
+        }
+    },
+
 
     all: async (req, res) => {
         let users
