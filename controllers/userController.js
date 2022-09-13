@@ -4,9 +4,22 @@ const crypto = require('crypto')//recurso propio de node.js para generar codigos
 const bcryptjs = require('bcryptjs')// recurso propio de nodejs para hashear constraseñas
 const sendMail = require('./sendMail')
 const { findOne } = require('../models/User')
+const Joi = require('joi')
+
+const validator = Joi.object({
+    name: Joi.string().min(4).max(40),
+    lastName: Joi.string().min(4).max(40),
+    photo: Joi.string().uri().message('INVALID_URL'),
+    mail: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+    password: Joi.string().strip(),
+    country: Joi.string().min(4).max(40),
+    from: Joi.string()
+})
 
 const userController = {
     signUp: async (req, res) => {
+        let result = await validator.validateAsync(req.body)
+
         let { name, photo, mail, password, role, from, lastName, country } = req.body
         // el role tiene que venir desde el front para usar este metodo para ambos casos
         try {
@@ -30,7 +43,7 @@ const userController = {
                     user = await new User({ name, photo, mail, password: [password], role, from: [from], logged, verified, code, lastName, country }).save()
                     //no hace falta enviar mail de verificacion
                     res.status(201).json({
-                        message: 'User signed up from' + from,
+                        message: 'User signed up from ' + from,
                         response: user,
                         success: true
                     })
@@ -38,7 +51,7 @@ const userController = {
             } else {// si el usuario SI existe
                 if (user.from.includes(from)) {//si la propiedad from del usuario (que es un array) incluye el valor from
                     res.status(200).json({//200 a confirma/estudiar
-                        message: 'User already registered' + from,
+                        message: 'User already registered ' + from,
                         response: user,
                         success: false
                     })
@@ -49,7 +62,7 @@ const userController = {
                     user.password.push(password)
                     await user.save()
                     res.status(201).json({
-                        message: 'User signed up from' + from,
+                        message: 'User signed up from ' + from,
                         response: user,
                         success: true
                     })
@@ -58,7 +71,7 @@ const userController = {
         } catch (error) {
             console.log(error)
             res.status(400).json({
-                message: "Couldn't signed up",
+                message: error.message,
                 success: false
             })
         }
@@ -219,7 +232,7 @@ const userController = {
 
 
     create: async (req, res) => {
-        try {
+        try {       
             await new User(req.body).save()
             res.status(201).json({
                 message: 'User created',
@@ -227,7 +240,7 @@ const userController = {
             })
         } catch (error) {
             res.status(400).json({
-                message: "Couldn't create user",
+                message: error.message,
                 success: false
             })
         }

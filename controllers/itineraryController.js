@@ -1,6 +1,18 @@
 const { query } = require('express')
 const { populate } = require('../models/Itinerary')
 const Itinerary = require('../models/Itinerary')
+const Joi = require('joi')
+
+const validator = Joi.object({
+    name: Joi.string().min(4).max(40),
+    city: Joi.string(),
+    user: Joi.string(),
+    price: Joi.number().integer().min(0).max(100000),
+    like: Joi.array().items(Joi.number()),
+    tags: Joi.array().items(Joi.string(), Joi.number()),
+    duration: Joi.number().integer().min(1).max(8),
+})
+
 
 const itineraryController = {
 
@@ -74,10 +86,9 @@ const itineraryController = {
     create: async (req, res) => {
 
         try {
+            let result = await validator.validateAsync(req.body)
 
-            await new Itinerary(req.body).save()
-
-                .populate("itinerary")
+            city = await new Itinerary(req.body).save()
             res.status(201).json({
                 message: 'Itinerary created',
                 success: true,
@@ -85,7 +96,7 @@ const itineraryController = {
             })
         } catch (error) {
             res.status(400).json({
-                message: "Couldn't create itinerary",
+                message: error.message,
                 success: false
             })
         }
@@ -95,6 +106,8 @@ const itineraryController = {
         const { id } = req.params
         const itinerary = req.body
         try {
+            let result = await validator.validateAsync(req.body)
+
             let newItinerary = await Itinerary.findOneAndUpdate({ _id: id }, itinerary, { new: true })
             if (itinerary) {
                 res.status(200).json({
@@ -111,7 +124,7 @@ const itineraryController = {
         } catch (error) {
             console.log(error)
             res.status(400).json({
-                message: "error",
+                message: message.error,
                 success: false
             })
         }
