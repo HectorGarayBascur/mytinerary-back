@@ -13,11 +13,7 @@ const validator = Joi.object({
     mail: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
     password: Joi.string().strip(),
     country: Joi.string().min(4).max(40),
-    role: Joi.string(),
-    from: Joi.string(),
-    logged: Joi.boolean(),
-    verified: Joi.boolean(),
-    code: Joi.string(),
+    from: Joi.string()
 })
 
 const userController = {
@@ -47,7 +43,7 @@ const userController = {
                     user = await new User({ name, photo, mail, password: [password], role, from: [from], logged, verified, code, lastName, country }).save()
                     //no hace falta enviar mail de verificacion
                     res.status(201).json({
-                        message: 'User signed up from' + from,
+                        message: 'User signed up from ' + from,
                         response: user,
                         success: true
                     })
@@ -55,7 +51,7 @@ const userController = {
             } else {// si el usuario SI existe
                 if (user.from.includes(from)) {//si la propiedad from del usuario (que es un array) incluye el valor from
                     res.status(200).json({//200 a confirma/estudiar
-                        message: 'User already registered' + from,
+                        message: 'User already registered ' + from,
                         response: user,
                         success: false
                     })
@@ -66,7 +62,7 @@ const userController = {
                     user.password.push(password)
                     await user.save()
                     res.status(201).json({
-                        message: 'User signed up from' + from,
+                        message: 'User signed up from ' + from,
                         response: user,
                         success: true
                     })
