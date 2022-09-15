@@ -193,6 +193,7 @@ const userController = {
               response: { user: loginUser },
               message: "Welcome to Mytinerary " + user.name,
               success: true,
+              mail: user.mail
             });
           } else {
             res.status(400).json({
