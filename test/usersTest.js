@@ -32,6 +32,7 @@ describe("POST /users/auth", function () {
           "http://www.istockphoto.com/resources/images/PhotoFTLP/1040315976.jpg",
         mail: "moyanojjeronimo+42@gmail.com",
         password: "hola.",
+
         role: "user",
         from: "from",
         lastName: "moyano",
@@ -40,9 +41,11 @@ describe("POST /users/auth", function () {
       .expect(201, done);
   });
 
+
   it("Must respond with 400 status", function (done) {
     request(app)
       .post("/users/auth")
+
       .send({})
       .expect(400)
       .end(function (err, res) {
