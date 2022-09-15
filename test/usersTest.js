@@ -10,7 +10,7 @@ describe("POST /users/auth", function () {
         name: "Carlos",
         photo:
           "http://www.istockphoto.com/resources/images/PhotoFTLP/1040315976.jpg",
-        mail: "moyanojjeronimo+4568@gmail.com",
+        mail: "moyanojjeronimo+25@gmail.com",
         password: "hola.",
         role: "user",
         from: "from",
@@ -19,8 +19,8 @@ describe("POST /users/auth", function () {
       })
       .then((response) => {
         assert.isString(response.body.id);
-        return done();
       });
+    return done();
   });
 
   it("must respond with 201", function (done) {
@@ -30,7 +30,7 @@ describe("POST /users/auth", function () {
         name: "Carlos",
         photo:
           "http://www.istockphoto.com/resources/images/PhotoFTLP/1040315976.jpg",
-        mail: "moyanojjeronimo+12377554@gmail.com",
+        mail: "moyanojjeronimo+42@gmail.com",
         password: "hola.",
         role: "user",
         from: "from",
