@@ -88,11 +88,11 @@ const itineraryController = {
         try {
             let result = await validator.validateAsync(req.body)
 
-            city = await new Itinerary(req.body).save()
+            let itinerary = await new Itinerary(req.body).save()
             res.status(201).json({
                 message: 'Itinerary created',
                 success: true,
-                tags: city.tags
+                tags: itinerary.tags
             })
         } catch (error) {
             res.status(400).json({

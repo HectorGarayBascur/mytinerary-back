@@ -3,7 +3,7 @@ const app = require('../app')
 const { assert } = require('chai')
 
 describe('POST /itineraries', function () {
-    it('Must responde with 201 status code', function (done) {
+    it('Must responde with 201 status codee', function (done) {
         request(app)
             .post('/itineraries')
             .send({
@@ -11,13 +11,14 @@ describe('POST /itineraries', function () {
                 user: "Pedro",
                 city: "Berlin",
                 price: 25,
-                like: [""],
+                like: ["98"],
                 tags: ["#beautifullcity", "#amazingTour"],
                 duration: 2,
             })
-            .expect(201, done)
+            .expect(201)
+            return done()
     })
-    it('Must responde with 400 status code', function (done) {
+    it('Must responde with 400 status codee', function (done) {
         request(app)
             .post('/itineraries')
             .send({
@@ -39,13 +40,13 @@ describe('POST /itineraries', function () {
                 user: "Pedro",
                 city: "Berlin",
                 price: 25,
-                like: [""],
+                like: ["88"],
                 tags: ["#beautifullcity", "#amazingTour"],
                 duration: 2,
             })
             .then(response => {
                 assert.isArray(response.body.tags)
-                done()
             })
+            return done()
     })
 })

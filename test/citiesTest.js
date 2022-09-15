@@ -9,15 +9,15 @@ describe('POST /cities', function () {
             .send({
                 city: "tu casa",
                 country: "tu barrio",
-                photo: "acaenlacasa",
+                photo: "http://acaenlacasa.jpg",
                 population: 10000,
                 description: "holaaa",
                 fundation: "1960-01-01"
             })
             .then(response => {
                 assert.isString(response.body.id)
-                done()
             })
+            return done()
     })
     it('Must responde with 201 status code', function (done) {
         request(app)
@@ -25,12 +25,13 @@ describe('POST /cities', function () {
             .send({
                 city: "tu casa",
                 country: "tu barrio",
-                photo: "acaenlacasa",
+                photo: "http://acaenlacasa.jpg",
                 population: 10000,
                 description: "holaaa",
                 fundation: "1960-01-01"
             })
-            .expect(201, done)
+            .expect(201)
+            return done()
     })
     it('Must responde with 400 status code', function (done) {
         request(app)
