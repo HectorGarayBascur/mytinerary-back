@@ -125,7 +125,7 @@ const userController = {
       if (user) {
         user.verified = true;
         await user.save();
-        res.status(200).redirect("https://www.google.com"); //aqui se coloca link de redireccion
+        res.status(200).redirect("http://localhost:3000/signin"); //aqui se coloca link de redireccion
         //redireccionar hacia index o pagina de bienvenida
         //no olvidar hostear el front para que funcione el redireccionamiento
       } else {
@@ -223,6 +223,8 @@ const userController = {
       let updated = await User.findByIdAndUpdate(id, body);
 
       if (updated) {
+        updated.logged = false;
+        await updated.save();
         res.status(200).json({
           message: "update successfully",
           success: true,
