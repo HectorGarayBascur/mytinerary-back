@@ -2,15 +2,15 @@ const request = require("supertest");
 const app = require("../app");
 const { assert } = require("chai");
 
-describe("POST /users/auth", function () {
+describe("POST /users/auth/signup", function () {
   it("Must respond with id", function (done) {
     request(app)
-      .post("/users/auth")
+      .post("/users/auth/signup")
       .send({
         name: "Carlos",
         photo:
           "http://www.istockphoto.com/resources/images/PhotoFTLP/1040315976.jpg",
-        mail: "moyanojjeronimo+25@gmail.com",
+        mail: "moyanojjeronimo+124112323@gmail.com",
         password: "hola.",
         role: "user",
         from: "from",
@@ -18,19 +18,21 @@ describe("POST /users/auth", function () {
         country: "argentina",
       })
       .then((response) => {
+        //  console.log(response);
         assert.isString(response.body.id);
-      });
-    return done();
+        done();
+      })
+      .catch((err) => done(err));
   });
 
   it("must respond with 201", function (done) {
     request(app)
-      .post("/users/auth")
+      .post("/users/auth/signup")
       .send({
         name: "Carlos",
         photo:
           "http://www.istockphoto.com/resources/images/PhotoFTLP/1040315976.jpg",
-        mail: "moyanojjeronimo+42@gmail.com",
+        mail: "moyanojjeronimo+23342344423@gmail.com",
         password: "hola.",
 
         role: "user",
@@ -41,10 +43,9 @@ describe("POST /users/auth", function () {
       .expect(201, done);
   });
 
-
   it("Must respond with 400 status", function (done) {
     request(app)
-      .post("/users/auth")
+      .post("/users/auth/signup")
 
       .send({})
       .expect(400)

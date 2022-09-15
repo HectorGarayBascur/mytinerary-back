@@ -54,6 +54,7 @@ const userController = {
             message: "User signed up from page",
             response: user,
             success: true,
+            id: user._id,
           });
         } else {
           //si viene desde redes sociales (cualquier red social)
@@ -77,6 +78,7 @@ const userController = {
             message: "User signed up from " + from,
             response: user,
             success: true,
+            id: user._id,
           });
         }
       } else {
@@ -99,6 +101,7 @@ const userController = {
             message: "User signed up from " + from,
             response: user,
             success: true,
+            id: user._id,
           });
         }
       }
