@@ -55,3 +55,66 @@ describe("POST /users/auth/signup", function () {
       });
   });
 });
+
+describe("POST /users/signin", function () {
+  it("Must respond with mail", function (done) {
+    request(app)
+      .post("/users/signin")
+      .send({
+        name: "Carlos",
+        photo:
+          "http://www.istockphoto.com/resources/images/PhotoFTLP/1040315976.jpg",
+        mail: "moyanojjeronimo+124112323@gmail.com",
+        password: "hola.",
+        role: "user",
+        from: "from",
+        lastName: "moyano",
+        country: "argentina",
+      })
+      .then((response) => {
+        assert.isString(response.body.mail);
+        done();
+      })
+      .catch((err) => done(err));
+  });
+
+  it("Must respond with 201", function (done) {
+    request(app)
+      .post("/users/signin")
+      .send({
+        name: "Carlos",
+        photo:
+          "http://www.istockphoto.com/resources/images/PhotoFTLP/1040315976.jpg",
+        mail: "moyanojjeronimo+124112323@gmail.com",
+        password: "hola.",
+
+        role: "user",
+        from: "from",
+        lastName: "moyano",
+        country: "argentina",
+      })
+      .expect(200, done);
+  });
+
+  it("Must respond with 401 status", function (done) {
+    request(app)
+      .post("/users/signin")
+
+      .send({
+        name: "Carlos",
+        photo:
+          "http://www.istockphoto.com/resources/images/PhotoFTLP/1040315976.jpg",
+        mail: "moyanojjeronimo+124112323@gmail.com",
+        password: "hola1",
+        role: "user",
+        from: "from",
+        lastName: "moyano",
+        country: "argentina",
+      })
+      .expect(400)
+      .end(function (err, res) {
+        if (err) return done(err);
+        return done();
+      });
+  });
+});
