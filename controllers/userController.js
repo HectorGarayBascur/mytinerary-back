@@ -243,18 +243,18 @@ const userController = {
   read: async (req, res) => {
     const { id } = req.params;
     try {
-      let itinerary = await Itinerary.findOne({ _id: id });
+      let user = await User.findOne({ _id: id });
       //city = {} // si no lo encuentra
       //si city no existe => city = {} retorno un json con 404
-      if (itinerary) {
+      if (user) {
         res.status(200).json({
-          message: "You get one itinerary",
-          response: itinerary,
+          message: "You get one user",
+          response: user,
           success: true,
         });
       } else {
         res.status(404).json({
-          message: "Couldn't find itinerary",
+          message: "Couldn't find user",
           success: false,
         });
       }
