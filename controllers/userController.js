@@ -227,12 +227,12 @@ const userController = {
         updated.logged = false;
         await updated.save();
         res.status(200).json({
-          message: "update successfully",
+          message: "Log out successfully",
           success: true,
         });
       } else {
         res.status(404).json({
-          message: "update failed",
+          message: "Couldnt'log out",
           success: false,
         });
       }
