@@ -178,29 +178,29 @@ const userController = {
             });
           }
         } else {
-          if (checkPass.length > 0) {
-            const loginUser = {
-              id: user._id,
-              name: user.name,
-              mail: user.mail,
-              role: user.role,
-              from: user.from,
-              photo: user.photo,
-            };
-            user.logged = true;
-            await user.save();
-            res.status(200).json({
-              response: { user: loginUser },
-              message: "Welcome to Mytinerary " + user.name,
-              success: true,
-              mail: user.mail
-            });
-          } else {
-            res.status(400).json({
-              message: "Invalid credentials",
-              success: false,
-            });
-          }
+          // if (checkPass.length > 0) {
+          const loginUser = {
+            id: user._id,
+            name: user.name,
+            mail: user.mail,
+            role: user.role,
+            from: user.from,
+            photo: user.photo,
+          };
+          user.logged = true;
+          await user.save();
+          res.status(200).json({
+            response: { user: loginUser },
+            message: "Welcome to Mytinerary " + user.name,
+            success: true,
+            mail: user.mail
+          });
+          // } else {
+          //   res.status(400).json({
+          //     message: "Invalid credentials",
+          //     success: false,
+          //   });
+          // }
         }
       } else {
         res.status(401).json({
