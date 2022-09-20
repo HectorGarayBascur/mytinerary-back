@@ -8,145 +8,145 @@ const City = require('./models/City')
 const Itinerary = require('./models/Itinerary')
 const User = require('./models/User')
 const Comment = require('./models/Comment')
-const Activity = require ("./models/Activity")
+const Activity = require("./models/Activity")
 
-Activity.create (
-    {
-        name: "Take pictures with Mayas",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
-        itinerary: "6319489224ef48d1739685b6",
-    },
-    {
-        name: "Take pictures",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
-        itinerary: "6319489224ef48d1739685b6",
-    },
-    {
-        name: "Walk through the ruins ",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
-        itinerary: "6319489224ef48d1739685b7",
-    },
-    {
-        name: "Take photos with the chief of a tribe ",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
-        itinerary: "6319489224ef48d1739685b7",
-    },
-    {
-        name: "Walk through the ruins  ",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
-        itinerary: "6319489224ef48d1739685b7",
-    },
-    {
-        name: "Taste native food of the indigenous",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
-        itinerary: "6319489224ef48d1739685b7",
-    },
-    {
-        name: "Eat a classic Mexican food restaurant",
-        photo: "https://www.paulinacocina.net/wp-content/uploads/2020/01/untitled-copy-800x450.jpg",
-        itinerary: "6319489224ef48d1739685b6",
-    },
-    {
-        name: "Trecking, hikes",
-        photo: "https://www.paulinacocina.net/wp-content/uploads/2020/01/untitled-copy-800x450.jpg",
-        itinerary: "6319489224ef48d1739685b6",
-    },
-    {
-        name: "Learn to drive a quad",
-        photo: "https://www.paulinacocina.net/wp-content/uploads/2020/01/untitled-copy-800x450.jpg",
-        itinerary: "6319489224ef48d1739685b6",
-    },
-    {
-        name: "Eating on the boat, getting to know the city",
-        photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/brujas-canal.jpg",
-        itinerary: "6319489224ef48d1739685bb",
-    },
-    {
-        name: "Take pictures of the citie by de boat",
-        photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/brujas-canal.jpg",
-        itinerary: "6319489224ef48d1739685bb",
-    },
-    {
-        name: "Romantic Date",
-        photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/brujas-canal.jpg",
-        itinerary: "6319489224ef48d1739685bb",
-    },
-    {
-        name: "Guided tour of the museum",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/ec/54/4e.jpg",
-        itinerary: "6319489224ef48d1739685bc",
-    },
-    {
-        name: "Eat at the bar set in the era",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/ec/54/4e.jpg",
-        itinerary: "6319489224ef48d1739685bc",
-    },
-    {
-        name: "Walk for free",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/ec/54/4e.jpg",
-        itinerary: "6319489224ef48d1739685bc",
-    },
-    {
-        name: "Take free beer samples",
-        photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/thumbs/heineken-experience.jpg",
-        itinerary: "6319489224ef48d1739685bd",
-    },
-    {
-        name: "Guided tour of the museum",
-        photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/thumbs/heineken-experience.jpg",
-        itinerary: "6319489224ef48d1739685bd",
-    },
-    {
-        name: "Take photos uploaded to the machines",
-        photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/thumbs/heineken-experience.jpg",
-        itinerary: "6319489224ef48d1739685bd",
-    },
-    {
-        name: "Take photos in incredible viewpoints",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
-        itinerary: "6319489224ef48d1739685ba",
-    },
-    {
-        name: "Guided alpine walks",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
-        itinerary: "6319489224ef48d1739685ba",
-    },
-    {
-        name: "Have a dinner with an incredible view",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
-        itinerary: "6319489224ef48d1739685ba",
-    },
-    {
-        name: "Train ride through the alps",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
-        itinerary: "6319489224ef48d1739685b9",
-    },
-    {
-        name: "Have a dinner with an incredible view",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
-        itinerary: "6319489224ef48d1739685b9",
-    },
-    {
-        name: "Take Pictures",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
-        itinerary: "6319489224ef48d1739685b9",
-    },
-    {
-        name: "You camp in the mountains",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/2c/89.jpg",
-        itinerary: "6319489224ef48d1739685ba",
-    },
-    {
-        name: "Take Pictures",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/2c/89.jpg",
-        itinerary: "6319489224ef48d1739685ba",
-    },
-    {
-        name: "Guide tour by de mountain",
-        photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/2c/89.jpg",
-        itinerary: "6319489224ef48d1739685ba",
-    },
-)
+// Activity.create (
+//     {
+//         name: "Take pictures with Mayas",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
+//         itinerary: "6319489224ef48d1739685b6",
+//     },
+//     {
+//         name: "Take pictures",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
+//         itinerary: "6319489224ef48d1739685b6",
+//     },
+//     {
+//         name: "Walk through the ruins ",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
+//         itinerary: "6319489224ef48d1739685b7",
+//     },
+//     {
+//         name: "Take photos with the chief of a tribe ",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
+//         itinerary: "6319489224ef48d1739685b7",
+//     },
+//     {
+//         name: "Walk through the ruins  ",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
+//         itinerary: "6319489224ef48d1739685b7",
+//     },
+//     {
+//         name: "Taste native food of the indigenous",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/17/2f/7f.jpg",
+//         itinerary: "6319489224ef48d1739685b7",
+//     },
+//     {
+//         name: "Eat a classic Mexican food restaurant",
+//         photo: "https://www.paulinacocina.net/wp-content/uploads/2020/01/untitled-copy-800x450.jpg",
+//         itinerary: "6319489224ef48d1739685b6",
+//     },
+//     {
+//         name: "Trecking, hikes",
+//         photo: "https://www.paulinacocina.net/wp-content/uploads/2020/01/untitled-copy-800x450.jpg",
+//         itinerary: "6319489224ef48d1739685b6",
+//     },
+//     {
+//         name: "Learn to drive a quad",
+//         photo: "https://www.paulinacocina.net/wp-content/uploads/2020/01/untitled-copy-800x450.jpg",
+//         itinerary: "6319489224ef48d1739685b6",
+//     },
+//     {
+//         name: "Eating on the boat, getting to know the city",
+//         photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/brujas-canal.jpg",
+//         itinerary: "6319489224ef48d1739685bb",
+//     },
+//     {
+//         name: "Take pictures of the citie by de boat",
+//         photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/brujas-canal.jpg",
+//         itinerary: "6319489224ef48d1739685bb",
+//     },
+//     {
+//         name: "Romantic Date",
+//         photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/brujas-canal.jpg",
+//         itinerary: "6319489224ef48d1739685bb",
+//     },
+//     {
+//         name: "Guided tour of the museum",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/ec/54/4e.jpg",
+//         itinerary: "6319489224ef48d1739685bc",
+//     },
+//     {
+//         name: "Eat at the bar set in the era",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/ec/54/4e.jpg",
+//         itinerary: "6319489224ef48d1739685bc",
+//     },
+//     {
+//         name: "Walk for free",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/ec/54/4e.jpg",
+//         itinerary: "6319489224ef48d1739685bc",
+//     },
+//     {
+//         name: "Take free beer samples",
+//         photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/thumbs/heineken-experience.jpg",
+//         itinerary: "6319489224ef48d1739685bd",
+//     },
+//     {
+//         name: "Guided tour of the museum",
+//         photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/thumbs/heineken-experience.jpg",
+//         itinerary: "6319489224ef48d1739685bd",
+//     },
+//     {
+//         name: "Take photos uploaded to the machines",
+//         photo: "https://cdn2.civitatis.com/paises-bajos/amsterdam/galeria/thumbs/heineken-experience.jpg",
+//         itinerary: "6319489224ef48d1739685bd",
+//     },
+//     {
+//         name: "Take photos in incredible viewpoints",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
+//         itinerary: "6319489224ef48d1739685ba",
+//     },
+//     {
+//         name: "Guided alpine walks",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
+//         itinerary: "6319489224ef48d1739685ba",
+//     },
+//     {
+//         name: "Have a dinner with an incredible view",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
+//         itinerary: "6319489224ef48d1739685ba",
+//     },
+//     {
+//         name: "Train ride through the alps",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
+//         itinerary: "6319489224ef48d1739685b9",
+//     },
+//     {
+//         name: "Have a dinner with an incredible view",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
+//         itinerary: "6319489224ef48d1739685b9",
+//     },
+//     {
+//         name: "Take Pictures",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/2f/ff/85.jpg",
+//         itinerary: "6319489224ef48d1739685b9",
+//     },
+//     {
+//         name: "You camp in the mountains",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/2c/89.jpg",
+//         itinerary: "6319489224ef48d1739685ba",
+//     },
+//     {
+//         name: "Take Pictures",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/2c/89.jpg",
+//         itinerary: "6319489224ef48d1739685ba",
+//     },
+//     {
+//         name: "Guide tour by de mountain",
+//         photo: "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/2c/89.jpg",
+//         itinerary: "6319489224ef48d1739685ba",
+//     },
+// )
 
 
 
@@ -676,7 +676,7 @@ Comment.create({
 // )
 
 
- User.create({
+User.create({
     name: "Pedro",
     lastName: "Martinez",
     photo: "http://drive.google.com/uc?export=view&id=1qjU-l4rZr83yyNNR_wU-0L4fKD0fqoVu",
@@ -700,7 +700,7 @@ Comment.create({
         password: "hola123",
         country: "Colombia",
     },
-) 
+)
 /*
 City.create({
     city: "Paris",
