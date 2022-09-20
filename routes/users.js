@@ -17,13 +17,13 @@ const {
 router.get("/", all);
 router.get("/:id", read);
 router.get("/verify/:code", verifyMail);
-router.post("/auth/signup", signUp);
-router.post("/signin", signIn);
-router.patch("/auth/signout/:id", signOut);
 router.get(
   "/token",
   passport.authenticate("jwt", { session: false }),
   verifyToken
 );
+router.post("/auth/signup", signUp);
+router.post("/signin", signIn);
+router.patch("/auth/signout/:id", signOut);
 
 module.exports = router;
