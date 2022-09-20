@@ -1,10 +1,23 @@
 const { query } = require('express')
 const City = require('../models/City')
+const Joi = require('joi')
+
+const validator = Joi.object({
+    city: Joi.string().min(4).max(40),
+    country: Joi.string().min(4).max(40),
+    photo: Joi.string().uri().message('INVALID_URL'),
+    population: Joi.number().integer().min(1000).max(100000000),
+    description: Joi.string().min(0).max(500),
+    fundation: Joi.date().less('now')
+})
+
 
 const cityController = {
     create: async (req, res) => {
         //    const {city,country,photo,population,description,fundation,} = req.body
         try {
+            let result = await validator.validateAsync(req.body)//lanza error de Joi
+
             let city = await new City(req.body).save()// req.body tiene que tener todas las variables antes descritas
             res.status(201).json({
                 message: 'City created',
@@ -12,8 +25,9 @@ const cityController = {
                 id: city._id
             })
         } catch (error) {
+
             res.status(400).json({
-                message: "Couldn't create city",
+                message: error.message,
                 success: false
             })
         }
@@ -91,6 +105,8 @@ const cityController = {
         const { id } = req.params
         const city = req.body
         try {
+            let result = await validator.validateAsync(req.body)
+
             let newCity = await City.findOneAndUpdate({ _id: id }, city, { new: true })
             if (city) {
                 res.status(200).json({
@@ -107,7 +123,7 @@ const cityController = {
         } catch (error) {
             console.log(error)
             res.status(400).json({
-                message: "error",
+                message: error.message,
                 success: false
             })
         }

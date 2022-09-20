@@ -1,7 +1,12 @@
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-    name: { type: String, required: true },
+    name: {
+        type: String,
+        required: true,
+        min: 4,
+        max: 40
+    },
 
     user: {
         type: mongoose.Types.ObjectId,
@@ -13,10 +18,20 @@ const schema = new mongoose.Schema({
         ref: 'cities',
         required: true
     },
-    price: { type: Number, required: true },
+    price: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 100000
+    },
     like: { type: Array, required: true },
     tags: { type: Array, required: true },
-    duration: { type: Number, required: true },
+    duration: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 8
+    },
 })
 
 
