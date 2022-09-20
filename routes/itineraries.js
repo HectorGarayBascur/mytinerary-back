@@ -17,11 +17,11 @@ router.post("/", create);
 router.get("/", readAll);
 router.get("/:id", read);
 router.patch("/:id", update);
-router.delete("/:id", destroy);
 router.patch(
   "/like/:id",
   passport.authenticate("jwt", { session: false }),
   like
 );
+router.delete("/:id", destroy);
 
 module.exports = router;
