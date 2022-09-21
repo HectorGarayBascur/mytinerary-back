@@ -5,6 +5,8 @@ const bcryptjs = require("bcryptjs"); // recurso propio de nodejs para hashear c
 const sendMail = require("./sendMail");
 const { findOne } = require("../models/User");
 const Joi = require("joi");
+const jwt = require("jsonwebtoken");
+const { AsyncResource } = require("async_hooks");
 
 const validator = Joi.object({
   name: Joi.string().min(4).max(40),
@@ -156,6 +158,8 @@ const userController = {
         );
         if (from == "form") {
           if (checkPass.length > 0) {
+            user.logged = true;
+            await user.save();
             const loginUser = {
               id: user._id,
               name: user.name,
@@ -164,10 +168,9 @@ const userController = {
               from: user.from,
               photo: user.photo,
             };
-            user.logged = true;
-            await user.save();
+            const token = jwt.sign({ id: user._id }, process.env.KEY_JWT, { expiresIn: 60 * 60 * 24 });
             res.status(200).json({
-              response: { user: loginUser },
+              response: { user: loginUser, token: token },
               message: "Welcome to Mytinerary " + user.name,
               success: true,
             });
@@ -189,11 +192,12 @@ const userController = {
           };
           user.logged = true;
           await user.save();
+          const token = jwt.sign({ id: user._id }, process.env.KEY_JWT, { expiresIn: 60 * 60 * 24 });
           res.status(200).json({
-            response: { user: loginUser },
+            response: { user: loginUser, token: token },
             message: "Welcome to Mytinerary " + user.name,
             success: true,
-            mail: user.mail
+            mail: user.mail,
           });
           // } else {
           //   res.status(400).json({
@@ -216,6 +220,29 @@ const userController = {
       });
     }
   },
+
+  verifyToken: (req, res) => {
+    // console.log(req.user)
+    if (!req.err) {
+      const token = jwt.sign({ id: req.user.id }, process.env.KEY_JWT, {
+        expiresIn: 60 * 60 * 24,
+      });
+      res.status(200).json({
+        success: true,
+        response: {
+          user: req.user,
+          token: token,
+        },
+        message: "Welcome " + req.user.name + "!",
+      });
+    } else {
+      res.json({
+        success: false,
+        message: "sign in please!",
+      });
+    }
+  },
+
   signOut: async (req, res) => {
     const id = req.params.id;
     const body = req.body;
