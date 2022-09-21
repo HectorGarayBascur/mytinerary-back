@@ -9,7 +9,7 @@ const validator = Joi.object({
   user: Joi.string(),
   price: Joi.number().integer().min(0).max(100000),
   like: Joi.array().items(Joi.number()),
-  tags: Joi.array().items(Joi.string(), Joi.number()),
+  tags: Joi.string().min(2).max(40),
   duration: Joi.number().integer().min(1).max(8),
 });
 
