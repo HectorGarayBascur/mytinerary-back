@@ -3,10 +3,10 @@ const app = require("../app");
 const { assert } = require("chai");
 var expect = require('chai').expect;
 
-describe("POST /cities", function () {
+describe("POST /cities/", function () {
     it("Must responde with the id", function (done) {
         request(app)
-            .post("/cities")
+            .post("/cities/")
             .send({
                 city: "tu caqsa",
                 country: "tu barrio",
@@ -23,7 +23,7 @@ describe("POST /cities", function () {
     });
     it("Must responde with 201 status code", function (done) {
         request(app)
-            .post("/cities")
+            .post("/cities/")
             .send({
                 city: "tu caqsa",
                 country: "tu baqrrio",
@@ -37,7 +37,7 @@ describe("POST /cities", function () {
     });
     it("Must responde with 400 status code", function (done) {
         request(app)
-            .post("/cities")
+            .post("/cities/")
             .send({})
             .expect(400)
             .end(function (err, res) {
@@ -47,10 +47,10 @@ describe("POST /cities", function () {
     });
 });
 
-describe('GET /cities', function () {
+describe('GET /cities/', function () {
     it('respond with json containing a list of all cities', function (done) {
         request(app)
-            .get('/cities')
+            .get('/cities/')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(200, done);
