@@ -6,13 +6,12 @@ const activityController = {
     create: async (req, res) => {
 
         try {
-            await new Activity(req.body).save()
-
+            let activity = await new Activity(req.body).save()
 
             res.status(201).json({
                 message: 'Activity Created',
                 success: true,
-
+                name: activity.name
             })
         } catch (error) {
             res.status(400).json({
